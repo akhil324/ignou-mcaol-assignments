@@ -1,10 +1,13 @@
 # 📘 MCS-213 — Assignment Workbook
-**Course:** Software Engineering (MCS-213) · **Assignment:** MCA_NEW(I)/213/Assign/2026 · **Session:** Jul-2026 (assignment p. 8)
-**Assignment pattern:** one case study worth **80 marks + 20 marks viva** — the five parts (a)–(e) are answered as **Q1(a)–Q1(e)** in this workbook.
-**Last date of submission:** 30 April 2026 (Jan session) / **31 October 2026 (July session)**.
-**TEE pattern (MCAOL online):** short 5×4 + medium 5×10 + long 2×15 = 100 marks. The four archived MCA_NEW papers use the older pattern — Q1 compulsory (4×10) + any 3 of the rest (2×10 each) = 100; every archived part is 10 marks.
-**Subject profile:** case-study / design document — one 80-mark case study; IEEE SRS format when asked; state assumptions (`assignment-workbook/references/subject-profiles.md`).
-**Book coverage:** complete — Blocks 1–4, Units 1–16, pp. 545–806 of `SEM1/21_MCAOL_SEM1_Study_Material_indexed.pdf`.
+- **Course:** Software Engineering (MCS-213)
+- **Assignment:** MCA_NEW(I)/213/Assign/2026
+- **Session:** Jul-2026 (assignment p. 8)
+- **Assignment pattern:** one case study worth **80 marks + 20 marks viva** — the five parts (a)–(e) are answered as **Q1(a)–Q1(e)** in this workbook.
+- **Last date of submission:** 30 April 2026 (Jan session) / **31 October 2026 (July session)**.
+- **TEE pattern (MCAOL online):** short 5×4 + medium 5×10 + long 2×15 = 100 marks. The four archived MCA_NEW papers use the older pattern — Q1 compulsory (4×10) + any 3 of the rest (2×10 each) = 100; every archived part is 10 marks.
+- **Subject profile:** case-study / design document — one 80-mark case study; IEEE SRS format when asked; state assumptions (`assignment-workbook/references/subject-profiles.md`).
+- **Book coverage:** complete — Blocks 1–4, Units 1–16, pp. 545–806 of `SEM1/21_MCAOL_SEM1_Study_Material_indexed.pdf`.
+- **Audience:** written for a **first-time student with no programming background** (MCAOL does not require a CS degree). Every business/technical term is explained in plain words, every estimate is shown with the exact calculator steps, and `*If you code:*` notes are optional extras. If browser/server/database or FP/COCOMO/PM are new, read the 📗 primer before Q1(a).
 
 > **🧭 How this workbook works (design rules)**
 > 1. **Order:** the parts are processed in assignment order (a) → (e), which follows the syllabus (models → requirements → estimation → SRS).
@@ -13,8 +16,9 @@
 > 4. **Out-of-order guard:** if a part needs a concept from an uncovered unit, add only a short "missing prerequisite" note (1–3 lines) and continue; its full treatment comes with its own question.
 > 5. **Two layers:** the *assignment layer* builds knowledge + the submission answer. The *TEE layer* answers **actual past TEE questions only** — never a made-up "TEE version" of an assignment part. A past question unlocks only when every concept it needs is already in the registry.
 > 6. **Dedup applies to teaching, not to exam answers:** a concept is taught once, but every answer is written standalone — it must work in the exam hall with no cross-references.
-> 7. **Symbols rule:** never show a symbol or abbreviation without (a) how to read it aloud, (b) why it exists, (c) a tiny example; use a code analogy when natural. Expand every abbreviation on first use.
+> 7. **Symbols rule:** never show a symbol or abbreviation without (a) a sentence in plain words, (b) how to read it aloud, (c) why it exists, (d) a tiny example. A code analogy may follow only as an optional `*If you code:*` aside. Expand every abbreviation on first use.
 > 8. **Figures rule:** anything a table cannot explain cleanly gets a picture — generated with `matplotlib` or extracted from the source PDF. Files live in `<workbook>.assets/` and are referenced beside the concept with a numbered caption.
+> 9. **Zero-background rule:** the workbook assumes no software-industry background. Universal basics (web system, documents, estimation maths, abbreviations) are taught once in the 📗 primer; every part then starts with what it assumes (🧰 L0) and gives a 🔰 explanation for anything not yet covered.
 
 **Marks & time budget (100 marks / 180 min ≈ 1.8 min per mark):**
 
@@ -52,6 +56,7 @@ The four archived MCS-213 papers carry only 10-mark parts; each TEE answer below
 
 | Concept | First taught | Later links |
 |---|---|---|
+| 📗 primer: how the five parts fit, web-system picture, engineering documents, estimation maths (ln/eˣ by calculator), abbreviation master table | 📗 Start here (before Q1) | every part links into it |
 | Software, its differences from engineering products | Q1(a) L0 | Q1(e) L0 |
 | Software engineering = process + methods + tools | Q1(a) L0 | — |
 | Software process; software crisis | Q1(a) L0 | — |
@@ -86,19 +91,158 @@ The four archived MCS-213 papers carry only 10-mark parts; each TEE answer below
 
 ---
 
+## 📗 Start here — the zero-background primer
+
+> **Who this is for.** This workbook assumes you have **never worked in software** and may not have used formal maths since school. Every idea it needs is taught below, once, in plain words. If you already work in IT, skim this section and skip every `*If you code:*` note — they are optional throughout.
+>
+> **This is one case study in five parts.** The same imaginary system — OPECS, a website that tells a candidate whether they are eligible for a university programme — is examined five times: (a) choose the way to build it, (b) list what it must do, (c) estimate its size and cost, (d) estimate the human work, (e) write the formal requirements document. Nothing you meet in one part is repeated later without a pointer back here.
+
+### 📗.1 How the five parts fit together
+
+| Part | The question | What you produce | What it reuses |
+|---|---|---|---|
+| Q1(a) | Which SDLC paradigm? | a chosen way of working + justification | nothing — this is the starting decision |
+| Q1(b) | Functional & non-functional requirements | two numbered lists (FR-01…, NFR-01…) | the case fields: Programme Code, Qualification Code, Course Codes, Percentage, SUBMIT |
+| Q1(c) | Estimate cost | size (FP → KLOC) → effort (COCOMO) → schedule → ₹ cost | the functions from (b) — they are counted to get the size |
+| Q1(d) | Estimate efforts | person-months + how they spread over phases and people | the size from (c) — 4.05 KLOC → 10.4 PM |
+| Q1(e) | SRS in IEEE format | the formal document: requirements, database, interfaces, constraints | the FR/NFR from (b) and the numbers from (c)/(d) |
+
+**The chain to remember:** 81 function points → 4.05 KLOC → 10.4 person-months → 6.1 months → ≈ ₹11.24 lakh. Each part explains one link, so whenever a beginner asks “where did this number come from?”, the answer is one part to the left.
+
+**Why the paper says “make assumptions wherever necessary”.** The case gives only the five fields; a real brief never contains everything. The paper tests whether you can *invent sensible details, write them down, and then use them consistently*. Every part of this workbook begins by stating its assumptions — copy that habit in the exam.
+
+### 📗.2 What a “web-based system” is — OPECS in one picture
+
+```
+  Candidate's device                 University's server                 University databases
+ ┌──────────────────┐              ┌────────────────────┐              ┌──────────────────────┐
+ │  BROWSER          │   internet   │  WEB SERVER         │   looks up   │  PROGRAMME table      │
+ │  (Chrome/Edge/    │ ──HTTPS────▶ │  runs the program:  │ ───────────▶ │  QUALIFICATION table  │
+ │   Firefox…)       │              │  reads the rules,   │              │  COURSE table         │
+ │  shows the FORM:  │ ◀──result──── │  decides Eligible / │              │  ELIGIBILITY RULE     │
+ │  5 fields + SUBMIT│              │  Not Eligible       │              │  table                │
+ └──────────────────┘              └────────────────────┘              └──────────────────────┘
+        the screen                      the logic                           the records
+```
+
+| Term | Plain meaning |
+|---|---|
+| browser / client | the app on the user's device (Chrome, Edge, Firefox) that shows pages; the user installs nothing extra |
+| form | the page with input boxes and the SUBMIT button — here the five fields |
+| server | the university's computer that runs the program and serves the data; users never touch it directly |
+| database | the university's electronic registers, organised as tables |
+| table / row / column | a table is like a sheet: one **row** = one record (one programme, one candidate query), one **column** = one field (title, percentage) |
+| login / session | proving who you are (password); a **session** is the period you stay logged in |
+| HTTPS / TLS | the “padlock”: data between browser and server is scrambled so nobody in between can read it |
+| in-house | built by the organisation's own team, not an outside company |
+| rollout | putting the finished system into real use, step by step |
+| “3-tier” (three-tier) | the usual shape of such a system: screen (front end) → rules/logic (server) → data (database) |
+
+*If you code:* none of this needs programming knowledge — it is the vocabulary of the documents later in this workbook.
+
+### 📗.3 Documents engineers write (and why the SRS matters)
+
+| Document | Written when | What it contains |
+|---|---|---|
+| SRS — **Software Requirements Specification** | after requirements analysis | what the system must do and be; the contract between customer and developers |
+| SDD — **Software Design Document** | after design | how the system will be built: modules, structure, database, screens |
+| Test cases | with testing | inputs to try and expected outputs; each traces back to a requirement |
+| User manual | with delivery | how the user operates the system |
+| Traceability matrix | maintained throughout | a table linking each requirement → design → code → test |
+
+**IEEE** = the *Institute of Electrical and Electronics Engineers*, a large professional body that publishes software standards. “IEEE format” simply means “in the standard section order of IEEE Std 830-1998”, which Q1(e) reproduces.
+
+More words you will meet: *deliverable* = something handed over (a document, a working release); *baseline* = an agreed version that later work builds on; *stakeholder* = anyone affected by the system; *constraint* = a limit imposed from outside (budget, deadline, existing database); *assumption* = something taken as true because the brief does not say.
+
+### 📗.4 The estimation toolbox — the only maths in this workbook
+
+**1. Percentages as shares.** 40% of 10.4 = 0.40 × 10.4 = 4.16 ≈ 4.2. The phase table in Q1(d) is four such multiplications that must add back to 10.4.
+
+**2. Powers with decimal exponents** (this is the step that stops beginners: `4.05^1.05`). It is computed with the **ln** and **eˣ** keys of any scientific calculator, or the `^` operator of a spreadsheet:
+
+| Step | Read it as | Keys / formula | Value |
+|---|---|---|---|
+| ln S | “the power to which e (= 2.718…) must be raised to give S” | `4.05` `ln` | 1.3987 |
+| × 1.05 | multiply that power by the exponent | `×` `1.05` `=` | 1.4686 |
+| eˣ | “raise e to this power” — the undo button of ln | `Shift`+`ln` | 4.343 |
+| × 2.4 | the COCOMO coefficient | `×` `2.4` `=` | **10.42 person-months** |
+
+*Any spreadsheet:* `=2.4*4.05^1.05` gives the same 10.42. The number `e` is fixed like π (≈ 2.71828); `ln` and `eˣ` undo each other, which is why the three steps are safe.
+
+**3. Units that must never be mixed up.**
+
+| Unit | Read it as | Meaning |
+|---|---|---|
+| LOC / KLOC | “lines of code” / “kilo-lines of code” | size of the program; KLOC = thousands of lines (4,050 LOC = 4.05 KLOC) |
+| FP | “function points” | size measured by what the user gets, not by lines |
+| PM | “person-month” | one person working one full month; 10.4 PM = one person for 10.4 months, or two people for about 5.2 |
+| ₹ | rupees | money; **1 lakh = ₹1,00,000**, so ₹11,24,200 ≈ **₹11.24 lakh** |
+
+**4. The uncertainty band.** “±20%” means the true value is expected between 80% and 120% of the estimate: 10.4 PM × 0.8 = 8.3 PM and × 1.2 = 12.5 PM. Always give the band — an estimate is a projection, not a measurement.
+
+**5. How to write a numeric answer (the marks pattern).** Formula → substitute the numbers → show the arithmetic (the ln/eˣ table) → **bold the result with its unit** → a sentence saying what it means. Round only at the end; keep four decimals while calculating.
+
+### 📗.5 Abbreviation master table (every abbreviation used later)
+
+| Short form | Full form | Plain meaning |
+|---|---|---|
+| SE | software engineering | building software by a planned, measurable process |
+| SDLC | Software Development Life Cycle | the phases from requirements to maintenance |
+| SRS / SDD / RDD | Software Requirements Specification / Software Design Document / Requirements Definition Description | the requirements document / the design document / the earlier output of requirements engineering |
+| RE | requirements engineering | the systematic method behind requirements analysis |
+| FR / NFR | functional / non-functional requirement | what the system does / how well it does it |
+| SPM | software project management | planning and controlling time, cost and quality |
+| FPA / FP / UFP / VAF / GSC | Function Point Analysis / function points / unadjusted function points / value adjustment factor / general system characteristics | the size-measuring method and its parts |
+| EI / EO / EQ / ILF / EIF | external input / output / inquiry / internal logical file / external interface file | the five things FPA counts |
+| LOC / KLOC | lines of code / thousand lines of code | program size |
+| PM | person-month | unit of human effort |
+| COCOMO | Constructive Cost Model | Boehm's model turning size into effort and schedule |
+| DFD | data flow diagram | picture of data moving through a system |
+| E-R | entity-relationship (diagram) | picture of the data at rest: entities, attributes, relationships |
+| PK / FK | primary key / foreign key | the column that identifies a row / a column pointing to another table |
+| RBAC | role-based access control | each user role gets only the rights its job needs |
+| HTTPS / TLS | HyperText Transfer Protocol Secure / Transport Layer Security | the padlock: encrypted traffic between browser and server |
+| MIS | management information system | summary reports for managers |
+| PNR | Passenger Name Record | a railway ticket's unique reference number |
+| CASE | computer-aided software engineering | tools that help produce and manage software documents |
+| QA / SQA | (software) quality assurance | planned activities that keep quality in the process |
+| TOC | table of contents | the navigation page of a document |
+| MoSCoW | Must / Should / Could / Won't | a common way to label requirement priorities |
+| HCI | human–computer interaction | how usable/pleasant the interface is for people |
+| CBSE | component-based software engineering | building from reusable components |
+| SCM | software configuration management | controlling versions and changes of documents and code |
+| RAD | Rapid Application Development | build fast from reusable components, with several teams working in parallel |
+| UG / PG | undergraduate / postgraduate | bachelor's-level / master's-level programmes |
+| CS | computer science | the subject, as in B.Sc. (CS) / M.Sc. (CS) |
+| PASCAL / COBOL | (programming-language names) | early languages of the 1970s, mentioned in the evolution answer |
+| DB | database | the university's electronic registers (📗.2) |
+| PERT / Gantt | programme evaluation and review technique / Gantt chart | standard project-scheduling tools (asked in a TEE question currently blocked) |
+| OPECS | Online Programme Eligibility Checking System | the imaginary system of this whole case study |
+| L0 / L1 / L2 / L3 | lesson 0 / lesson 1 / lesson 2 / lesson 3 | the section labels inside each part of this workbook; **L0 = what the part assumes** |
+
+### 📗.6 If you get stuck
+
+1. Unknown **abbreviation** → 📗.5; if it is missing there, it is defined in the part's 🧰 L0 table.
+2. Unknown **computer term** (server, database, browser, session) → 📗.2. Unknown **document term** (SRS, deliverable, baseline) → 📗.3.
+3. Stuck on a **number** (4.05^1.05, PM, KLOC, lakh) → 📗.4; every estimate here uses only the four operations plus the ln/eˣ routine.
+4. **Lost in the middle of a part** → its 🧰 L0 table lists what the part assumes; the 🧾 registry says where each idea was taught.
+5. **Asking for help**: quote the part and section (`Q1(c) — the FP table`) and the exact row — the section names (L0, L1, UFP, VAF) are stable.
+
+---
+
 # Q1(a) — Which SDLC paradigm for OPECS? (15 marks)
 *Assignment p. 8 · Book: Block 1, Unit 1 “Software Engineering and its Models”, pp. 545–561*
 
 ## 🧰 L0. Prerequisite bridge — what this question silently assumes
 
-| Term | Read it as | What it is & why it exists | Example / code analogy |
+| Term | Read it as | What it is & why it exists | Example |
 |---|---|---|---|
-| software | — | programs + procedures + data + documents that make a computer useful; it is *developed*, never manufactured, and never 100 % error-free | `app = code + docs + data` |
-| software engineering (SE) | "S-E" | the field that applies an engineering approach to software by combining **process, methods and tools**, so cost, schedule and quality become predictable instead of accidental (Block 1 U1, p. 545) | `SE = process + methods + tools` |
-| software process | — | the set of activities performed in a defined sequence to reach a goal; answers *who does what, when and how* (Booch & Rumbaugh) | a CI/CD pipeline: ordered, repeatable |
-| SDLC | "S-D-L-C" — Software Development Life Cycle | the phases a software product passes through: Requirements → Design → Coding → Testing → Maintenance | sprint 0 → sprints → release → support |
-| process model / paradigm | "paradigm" | one named arrangement of those phases over time — linear, iterative, spiral …; the arrangement decides when risks and feedback are handled | choosing a branching strategy in Git |
-| software crisis | — | the recurring failure pattern: overruns, wrong requirements, late defects, maintenance eating 50–80 % of lifetime cost | production incidents caused by missed requirements |
+| software | — | the instructions and data that make a computer useful — the *app*, not the machine. It is *developed* (built once by a project), never manufactured in a factory, and never 100 % error-free | the OPECS website itself: pages, rules, records, manuals |
+| software engineering (SE) | "S-E" | applying an engineering approach to software by combining **process, methods and tools**, so time, cost and quality become predictable instead of accidental (Block 1 U1, p. 545) | a builder plans, measures and inspects rather than improvising |
+| software process | — | the agreed order of work that answers *who does what, when and how* (Booch & Rumbaugh) | a building schedule: foundation → walls → roof → inspection |
+| SDLC | "S-D-L-C" — Software Development Life Cycle | the whole route a product travels: Requirements → Design → Coding → Testing → Maintenance | for OPECS: interview the Academic Cell → design screens/database → write the program → test the rules → add new rules every session |
+| process model / paradigm | "paradigm" | one named arrangement of those phases over time — linear (waterfall), iterative, spiral …; the arrangement decides when feedback and risks are handled | building a house room-by-room (incremental) versus finishing the whole design before laying a brick (waterfall) |
+| software crisis | — | the recurring failure pattern: projects finish late or over budget, requirements turn out wrong, and maintenance swallows most of the lifetime cost | a portal delivered after the admission season, with the wrong eligibility rule |
 
 **Why software is not like other engineering products** (Block 1 U1 §1.3, pp. 547–548) — the reason a *process* is needed at all:
 
@@ -294,7 +438,7 @@ A **software process** is the set of activities performed in a defined order to 
 | Phase | Activity on OPECS | Output |
 |---|---|---|
 | **1. Requirements analysis** | interview the Academic Cell and admission staff; fix the five inputs (Programme Code, Qualification Code, Course Codes, Percentage, SUBMIT) and the eligibility rules; write the SRS | SRS document |
-| **2. Design** | design the web architecture (3-tier), the database tables (programme, qualification, course, rule, candidate) and the screens | SDD document |
+| **2. Design** | design the web architecture (3-tier — screen, rules/logic, database), the database tables (programme, qualification, course, rule, candidate) and the screens | SDD document |
 | **3. Coding** | code the user interface, the rule-evaluation module and the database access layer in a web technology stack, following coding standards | program + unit tests |
 | **4. Testing** | test every rule with valid/invalid combinations, boundary percentages, simultaneous users | test cases, defect reports |
 | **5. Maintenance** | corrective (fix a wrong rule result), adaptive (new database or browser), perfective (add new programme rules each session) | updated releases |
@@ -366,6 +510,7 @@ The phases are tightly coupled: the output of each governs the next (requirement
 | Structure | L0 → L1–L3 → traps/self-check → exam trail → 15-mark answer → TEE layer → verification | ✅ |
 | Assignment answer | Assumptions + 3 tables + 6 justification points; ≈ 560 prose words → ~30–35 min handwritten | ✅ |
 | Symbol standard | Every term has read-aloud, purpose and example; SE, SDLC, RAD, SRS, SDD expanded on first use | ✅ |
+| Zero-background | L0 examples use everyday life, not software industry; primer links added; no code-dependent explanation | ✅ |
 | Question-first | Case quoted in full in the header; answer re-quotes Q1(a); all TEE answers embed their verbatim question | ✅ |
 | Figures | Figs 1–2 in `MCS-213_Assignment_Workbook.assets/`, referenced with numbered captions | ✅ |
 | TEE layer | Real past questions only; 5 answered standalone at paper coordinates/marks; 5 blocked with the exact missing lesson | ✅ |
@@ -380,7 +525,7 @@ The phases are tightly coupled: the output of each governs the next (requirement
 |---|---|---|---|
 | requirement (IEEE 610.12) | — | a condition or capability needed by a user, or that a system must possess to satisfy a contract; also the documented representation of that condition | “the system must accept a Programme Code” |
 | requirements analysis | — | the activity of identifying, defining and analysing needs: (1) identify end-user needs, (2) prepare the SRS, (3) analyse and validate it for consistency, completeness and feasibility, (4) identify further requirements | turning the Academic Cell's admission rules into a system specification |
-| requirements engineering (RE) | “R-E” | the *systematic* use of proven principles, techniques and language tools for cost-effective analysis, documentation and evaluation of user needs, and for specifying the system's **external behaviour**; its output is the **RDD** (Requirements Definition Description) | RE = method behind requirements analysis |
+| requirements engineering (RE) | "R-E" | the *systematic* use of proven principles, techniques and language tools for cost-effective analysis, documentation and evaluation of user needs, and for specifying the system's **external behaviour** (what the system does as seen from outside — its answers to inputs, not how the code is written); its output is the **RDD** (Requirements Definition Description) | RE = method behind requirements analysis |
 | stakeholder | — | anyone who affects or is affected by the system | candidate, admission clerk, Academic Cell, IT cell |
 | requirements management | — | the RE branch that tracks requirements, checks that the RDD is fully implemented and controls changes made later | change log of eligibility rules |
 
@@ -402,6 +547,10 @@ The two branches of requirements engineering (Block 1 U2 §2.2.1, p. 562): **req
 | OPECS example | “on SUBMIT, display Eligible/Not Eligible for the chosen programme” | “the result must appear within 3 seconds at 200 concurrent users” |
 
 A good SRS must be **correct, consistent, unambiguous and complete** (Block 1 U2 §2.2.3); therefore every requirement should be **uniquely identified, testable, traceable** and written in the user's language. An NFR without a number is an opinion — always attach a metric and a condition.
+
+*Uniquely identified* = every requirement carries an ID (FR-01, NFR-03). *Testable* = a tester can decide pass/fail from the sentence alone. *Traceable* = the requirement can be followed **forward** into design and tests and **backward** to the user need that asked for it — the ID is the thread you pull.
+
+> *Everyday analogy:* a restaurant menu. The **functional** requirements are what it can serve ("the kitchen shall prepare a veg thali"); the **non-functional** ones are how well it serves ("within 15 minutes", "table cleaned between guests", "no dish above ₹300"). Both are promises; only the second kind needs a measuring instrument.
 
 **How requirements are gathered** (Block 1 U2 §2.2.5, p. 565):
 
@@ -528,6 +677,7 @@ The requirements describe the system from the **outside**. The book models this 
 | Figures | Fig 3 (context diagram) referenced with numbered caption | ✅ |
 | TEE layer | 1 answered standalone; DFD question cross-answered in Q1(e); design question blocked | ✅ |
 | Registry | FR, NFR, RE, gathering tools, context diagram recorded with first-teaching location | ✅ |
+| Zero-background | FR/NFR analogy + ID/testable/traceable words defined in plain language; primer links added | ✅ |
 
 # Q1(c) — Estimate cost (15 marks)
 *Assignment p. 8 · Book: Block 2, Unit 5 “Software Project Planning”, pp. 608–620*
@@ -581,6 +731,8 @@ Each component gets a complexity (low / medium / high), and the weights come fro
 
 Derived metrics: **productivity = FP ÷ person-month**, **quality = defects ÷ FP**.
 
+**What the 0–5 rating of the 14 GSCs means.** Each general system characteristic (data communication, performance, transaction rate, online data entry, complex processing, reusability, ease of change, …) is scored from **0 = “no influence on this project”** to **5 = “strong influence”**, by asking how much that quality shapes the design. The scores are summed (ΣFᵢ) and folded into the VAF, which ranges from 0.65 (all zeros) to 1.35 (all fives); higher means more system-wide complexity, hence more function points. 📗.4 turns the formula into calculator steps.
+
 ## 🧮 L2. From size to effort and cost (Block 2 U5 §5.3–5.4, pp. 612–619)
 
 **COCOMO** — **Co**nstructive **Co**st **Mo**del, by Barry Boehm. Three levels:
@@ -600,6 +752,16 @@ Three project classes: **organic** (small, experienced team, familiar applicatio
 | Embedded | 3.6 | 1.20 | 2.5 | 0.32 |
 
 For **basic** COCOMO the multiplier is m = 1; the intermediate model sets m from the 15 cost drivers.
+
+**Doing `S^1.05` without fear (any scientific calculator, or a phone calculator turned landscape).** `S^1.05` is not a school power; it uses two inverse keys — **ln** and **eˣ** — in three steps (the full explanation is 📗.4):
+
+| Step | Keys | OPECS value |
+|---|---|---|
+| ln S | `4.05` `ln` | 1.3987 |
+| × 1.05 | `×` `1.05` `=` | 1.4686 |
+| eˣ | `Shift`+`ln` | 4.343 → × 2.4 = **10.42 person-months** |
+
+The same routine gives the schedule: ln 10.42 = 2.3440, × 0.38 = 0.8907, eˣ = 2.437, × 2.5 = **6.09 ≈ 6.1 months**. *Any spreadsheet:* `=2.4*4.05^1.05` returns the same number.
 
 ![Basic COCOMO effort curves](MCS-213_Assignment_Workbook.assets/fig_cocomo_curve.png)
 *🖼️ Figure 5 — Basic COCOMO effort curves. OPECS (S ≈ 4.05 KLOC) sits on the organic curve at E ≈ 10.4 person-months; the same size would cost ~13 PM semi-detached and ~17 PM embedded — the class is a real decision, not a label.*
@@ -787,6 +949,7 @@ Each component is rated low/medium/high complexity and weighted: EO 4/6/8, EI 2/
 | Assignment answer | 4 steps + 3 tables, every substitution shown, **₹11.24 lakh** bolded; ≈ 520 prose words + tables → ~30–35 min handwritten | ✅ |
 | Numbers verified | UFP 73; ΣFᵢ 46 → VAF 1.11 → 81.03 FP; 4.05 KLOC; E = 10.42 PM; D = 6.09 months; cost 10,22,000 + 1,02,200 = 11,24,200; cross-check 6.6 months | ✅ |
 | Symbol standard | VAF, E, D, S, m, PM, UFP, FP, KLOC each read aloud with purpose and example | ✅ |
+| Zero-background | GSC 0–5 meaning explained; ln/eˣ calculator steps written out for S^1.05 and E^0.38; units table linked to primer | ✅ |
 | Question-first | Verbatim part (c) + shared case; all TEE answers embed their questions | ✅ |
 | Figures | Figs 4–5 referenced with numbered captions | ✅ |
 | TEE layer | 3 answered standalone at paper marks; Putnam cross-answered in Q1(d) | ✅ |
@@ -844,6 +1007,8 @@ Putnam's **Rayleigh–Norden curve** explains *why* staffing is not constant: th
 *🖼️ Figure 7 — Rayleigh–Norden manpower distribution for K ≈ 10.4 person-months over T ≈ 6.1 months: area under the curve = total effort; staffing peaks near T and tapers into maintenance (Block 2 U5 §5.4.2).*
 
 Staffing is derived, never guessed: **persons ≈ phase effort ÷ phase duration**, and the team size must stay near the average **total effort ÷ total duration = 10.4 ÷ 6.1 ≈ 1.7 persons**, rising only for the testing peak.
+
+**The maths here is only ×, ÷ and percentages** except for `10.42^0.38`, which uses the same three calculator steps as Q1(c): `ln 10.42 = 2.3440`, `× 0.38 = 0.8907`, `eˣ = 2.437`.
 
 ## ⚠️ Before you move on — traps and self-check
 
@@ -948,6 +1113,7 @@ Staffing follows the Rayleigh-Norden shape: one analyst + part-time project mana
 | Assignment answer | 5 steps + 2 tables, every substitution shown, **10.4 PM / 6.1 months / team of 2** bolded; ≈ 480 prose words + tables → ~27–30 min handwritten | ✅ |
 | Numbers verified | E = 10.42 PM; D = 6.09 months; 10.4 ÷ 6.1 = 1.7; 10/20/40/30 % → 1.0/2.1/4.2/3.1 PM; productivity cross-check 81/8 = 10.1 PM; ±20 % → 8.3–12.5 PM | ✅ |
 | Symbol standard | E, D, PM, K, T, Ck, P(t) each read aloud with purpose and example | ✅ |
+| Zero-background | person-month vs month, phase shares and the 10.42^0.38 calculator steps spelled out | ✅ |
 | Question-first | Verbatim part (d) + shared case; TEE answer embeds its question | ✅ |
 | Figures | Figs 6–7 referenced with numbered captions | ✅ |
 | TEE layer | Putnam answered standalone at paper marks; scheduling blocked with reason | ✅ |
@@ -958,6 +1124,8 @@ Staffing follows the Rayleigh-Norden shape: one analyst + part-time project mana
 ## 🧰 L0. Prerequisite bridge — what the SRS is for
 
 The **SRS (Software Requirements Specification)** is the document produced by requirements analysis. It is written in natural language and clearly defines (Block 1 U2 §2.2.3): the **external interfaces** of the system (what information flows to and from it), the **functional and non-functional requirements**, and the **design constraints**. Because it is the baseline from which design, code, tests and maintenance all derive, the SRS must be **correct, consistent, unambiguous and complete**.
+
+**What OPECS physically is (this makes the document concrete).** A *web-based system* means the user needs only a **browser**. The browser shows a **form** (the five fields); on SUBMIT the data travels over the internet to the university's **server**, a program there looks up the **database** (tables of programmes, qualifications, courses and rules), and the answer travels back to the screen. The database is the university's electronic registers: a *table* is like a sheet, a *row* is one record, a *column* is one field. There is a picture in 📗.2 — no other computer knowledge is needed for this part.
 
 | Reader | Uses the SRS to … |
 |---|---|
@@ -1052,6 +1220,8 @@ DFDs are built in **layers**: the **level-0 DFD** views the whole system as a si
 
 ---
 
+> **Note on terms used below (for a non-specialist reader).** *HTTPS/TLS* is the padlock technology that scrambles data between browser and server. *RBAC (role-based access control)* gives each user role — candidate, clerk, Academic Cell officer, administrator — only the rights its work needs. *Session timeout* means the system logs a user out automatically after 15 minutes without activity. PK and FK are explained at section 3.4.
+
 #### 1. Introduction
 
 **1.1 Purpose.** This document specifies the complete requirements for the Online Programme Eligibility Checking System (OPECS), a web-based system that decides whether a candidate is eligible for admission to a chosen university programme. It is the contract between the university (customer) and the development team, and the baseline for design, coding, testing and maintenance.
@@ -1123,7 +1293,7 @@ DFDs are built in **layers**: the **level-0 DFD** views the whole system as a si
 
 **3.3 Performance requirements.** 95 % of eligibility responses within 3 s, none beyond 5 s; 200 concurrent users and 1 000 queries/hour at admission peak; 500 000 logged queries without performance loss; page load under 2 s on a 3G connection.
 
-**3.4 Logical database requirements.** Entities and key relationships (an E-R view):
+**3.4 Logical database requirements.** Entities and key relationships (an E-R view). In the table below **PK = primary key** — the field that identifies each record uniquely (like a roll number); **FK = foreign key** — a field that points to a record in another table (like a candidate's programme code pointing to the programme table):
 
 | Entity | Key attributes | Relationships |
 |---|---|---|
@@ -1139,7 +1309,7 @@ DFDs are built in **layers**: the **level-0 DFD** views the whole system as a si
 
 **3.7 Organising the specific requirements.** Requirements are organised by **mode** — candidate mode (FR-01…FR-08) and maintenance mode (FR-09, FR-10) — and numbered so that each can be traced to design and tests. The traceability matrix in Appendix C maps every case element to its requirement.
 
-**3.8 Additional comments.** Priorities follow MoSCoW-style classes (Must/Should); a *Could* class (SMS notification of results, vernacular interface) is noted for future releases. OPECS never stores more personal data than the query and its result.
+**3.8 Additional comments.** Priorities follow MoSCoW-style classes (a common naming of priority groups: **M**ust have, **S**hould have, **C**ould have, **W**on't have this time — only Must/Should appear here); a *Could* class (SMS notification of results, vernacular interface) is noted for future releases. OPECS never stores more personal data than the query and its result.
 
 #### 4. Supporting information
 
@@ -1206,7 +1376,7 @@ An **SRS (Software Requirements Specification)** is the document produced by req
 **📄 Question — Jun-2025 TEE, Q4(a) [10 marks]**
 > Draw first 3-levels of DFD, for a ‘Railway Reservation System’. Make necessary assumptions.
 
-**Assumptions.** A passenger reserves or cancels a ticket online and pays through an external payment gateway; the Railway Admin maintains train schedules and fares and receives reports; the system keeps three data stores — **D1 Train schedule (fares & classes)**, **D2 Reservation DB** and **D3 Payment records**; passenger, admin, payment and schedule data are all outside the system boundary as external interfaces.
+**Assumptions.** A passenger reserves or cancels a ticket online and pays through an external payment gateway (the service that processes card/net-banking payments); the Railway Admin maintains train schedules and fares and receives reports; the system keeps three data stores — **D1 Train schedule (fares & classes)**, **D2 Reservation DB** and **D3 Payment records**; passenger, admin, payment and schedule data are all outside the system boundary as external interfaces.
 
 **Rules followed.** Processes are named and numbered (0, 1.0, 2.1 …); every process has at least one input and one output; each level is internally consistent with its parent (the level-1 diagram balances the single level-0 bubble); data stores contain exactly the data elements that flow into and out of them.
 
@@ -1215,12 +1385,12 @@ An **SRS (Software Requirements Specification)** is the document produced by req
 ![Railway Reservation System — level 0 DFD](MCS-213_Assignment_Workbook.assets/fig_railway_l0.png)
 *🖼️ Figure 10 — Level 0 (context) DFD: passenger and admin interact with the reservation system; the payment gateway and train/fare master are the other interfaces.*
 
-**Level 1 — main processes.** The single bubble is exploded into **1.0 Check availability & book ticket**, **2.0 Cancel/refund ticket** and **3.0 Generate reports & MIS**, with the data stores under them.
+**Level 1 — main processes.** The single bubble is exploded into **1.0 Check availability & book ticket**, **2.0 Cancel/refund ticket** and **3.0 Generate reports & MIS** (management information system — the summary reports railway managers work from), with the data stores under them.
 
 ![Railway Reservation System — level 1 DFD](MCS-213_Assignment_Workbook.assets/fig_railway_l1.png)
 *🖼️ Figure 11 — Level 1 DFD: 1.0 reads D1 and writes D2, 2.0 updates D2, 3.0 reads D2 and reports to the admin.*
 
-**Level 2 — explode 1.0 Book Ticket.** The booking process is refined into five sub-processes: **2.1** select train/class/date, **2.2** check seat availability, **2.3** enter passenger details, **2.4** collect fare (payment), **2.5** confirm booking and issue PNR.
+**Level 2 — explode 1.0 Book Ticket.** The booking process is refined into five sub-processes: **2.1** select train/class/date, **2.2** check seat availability, **2.3** enter passenger details, **2.4** collect fare (payment), **2.5** confirm booking and issue the **PNR (Passenger Name Record — the ticket's unique reference number)**.
 
 ![Railway Reservation System — level 2 DFD](MCS-213_Assignment_Workbook.assets/fig_railway_l2.png)
 *🖼️ Figure 12 — Level 2 DFD: 2.5 writes the confirmed booking to D2 and returns the PNR; payment records go to D2/D4 through the gateway.*
@@ -1239,6 +1409,7 @@ An **SRS (Software Requirements Specification)** is the document produced by req
 | Figures | Figs 8–9 in the study/SRS; Figs 10–12 in the DFD TEE answer, all captioned | ✅ |
 | TEE layer | 2 answered standalone at paper marks; 2 blocked with the exact missing units | ✅ |
 | Registry | SRS, IEEE outline, DFD rules, data dictionary, E-R, traceability recorded once | ✅ |
+| Zero-background | web-system picture (browser/server/database) and document vocabulary taught before the SRS; SRS carries a reader note for HTTPS/RBAC/session; PNR and MIS expanded inside the railway TEE answer | ✅ |
 
 ---
 
@@ -1255,6 +1426,7 @@ An **SRS (Software Requirements Specification)** is the document produced by req
 | Figures | 12 figures in `MCS-213_Assignment_Workbook.assets/`, all referenced with numbered captions and viewed before use | ✅ |
 | TEE layer | Real past questions only; **12 answered** standalone at paper coordinates and marks; others marked queued/blocked with reasons | ✅ |
 | Registry | Every concept listed once with its first-teaching location; later parts link instead of repeating | ✅ |
+| Zero-background | 📗 primer teaches the five-part chain, the web-system picture, document vocabulary, estimation maths (ln/eˣ, PM/KLOC/FP, lakh) and every abbreviation used later; code/industry analogies removed from study text | ✅ |
 | Exam archive | 4 sessions (Dec-2024, Jun-2025, Dec-2025, Jun-2026) swept via the annotated MDs in `SEM1/Question Papers/MCS-213 - Software Engineering/` | ✅ |
 
 **TEE bank sweep (all MCS-213 questions, 4 archived sessions):**

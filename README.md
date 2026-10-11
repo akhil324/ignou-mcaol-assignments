@@ -10,14 +10,14 @@ Each workbook answers the **full assignment with every step shown**, teaches the
 | Course | Workbook | What is inside |
 |---|---|---|
 | **MCS-211 — Design and Analysis of Algorithms** | **[MCS-211_Assignment_Workbook.md](SEM1/MCS-211_Assignment_Workbook.md)** | All 17 assignment parts (80 marks) + 23 past-TEE answers · 24 figures · 📗 beginner primer + symbol master table |
-| **MCS-213 — Software Engineering** | **[MCS-213_Assignment_Workbook.md](SEM1/MCS-213_Assignment_Workbook.md)** | Full 80-mark case study (OPECS: FR/NFR, IEEE-830 SRS, DFDs, FPA → COCOMO estimate) + 12 past-TEE answers · 12 figures |
+| **MCS-213 — Software Engineering** | **[MCS-213_Assignment_Workbook.md](SEM1/MCS-213_Assignment_Workbook.md)** | Full 80-mark case study (OPECS: FR/NFR, IEEE-830 SRS, DFDs, FPA → COCOMO estimate) + 12 past-TEE answers · 12 figures · 📗 primer (web-system picture, estimation maths with calculator steps, abbreviation table) |
 
 More courses and semesters (SEM2–SEM4) will be added as they are processed.
 
 ## How to use these workbooks
 
 1. **Open the workbook** — GitHub renders the Markdown like a web page, figure images included. No software to install.
-2. **Start with the 📗 primer** if `for`, `A[i]`, bits, graphs, log or Σ are unfamiliar. Half an hour there makes every question afterwards readable.
+2. **Start with the 📗 primer** if the course's technical words are unfamiliar — pseudo-code, bits, graphs and log/Σ for MCS-211; browser/server/database and FP/COCOMO/PM for MCS-213. Half an hour there makes every question afterwards readable.
 3. **Per question, follow the flow:** 🧰 what the question assumes → lessons with worked examples → ⚠️ traps → 🧪 past-paper trail → ✍️ the model answer.
 4. **Attempt first, then check.** The ✍️ answer is a model, not a script to copy: submit **your own words** (IGNOU penalises verbatim reproduction) and be ready for viva questions on what you submitted.
 

@@ -1,10 +1,12 @@
 # 📘 MCS-211 — Assignment Workbook
-**Course:** Design and Analysis of Algorithms (MCS-211) · **Assignment:** MCA_NEW(I)/211/Assign/2026 · **Session:** Jul-2026 (pp. 3–5)
-**Assignment pattern:** 4 questions × 20 marks = 80 marks + 20 marks viva — **all 17 parts answered in this workbook**.
-**TEE pattern (MCAOL online):** Short 5×4 + Medium 5×10 + Long 2×15 = 100 marks
-**Subject profile:** numerical/method — algorithms, step-by-step solves, curves/graphs/trees (`assignment-workbook/references/subject-profiles.md`).
-**Book coverage:** complete for MCS-211 (Blocks 1–4, pp. 2–290). Note: the unit does not print pseudo-code for binary search or insertion sort (mentioned only) — those two algorithms are presented from standard references and marked in Q1(c)/Q1(f).
-**Audience:** written for a **first-time student with no programming background** (MCAOL does not require a CS degree). Every symbol is read aloud, every algorithm is traced on a tiny input, and `*If you code:*` notes are **optional extras** — skip them without losing anything. If `for`, `A[i]`, bits, graphs or logs are new, read the 📗 primer just below before Q1.
+- **Course:** Design and Analysis of Algorithms (MCS-211)
+- **Assignment:** MCA_NEW(I)/211/Assign/2026
+- **Session:** Jul-2026 (pp. 3–5)
+- **Assignment pattern:** 4 questions × 20 marks = 80 marks + 20 marks viva — **all 17 parts answered in this workbook**.
+- **TEE pattern (MCAOL online):** Short 5×4 + Medium 5×10 + Long 2×15 = 100 marks
+- **Subject profile:** numerical/method — algorithms, step-by-step solves, curves/graphs/trees (`assignment-workbook/references/subject-profiles.md`).
+- **Book coverage:** complete for MCS-211 (Blocks 1–4, pp. 2–290). Note: the unit does not print pseudo-code for binary search or insertion sort (mentioned only) — those two algorithms are presented from standard references and marked in Q1(c)/Q1(f).
+- **Audience:** written for a **first-time student with no programming background** (MCAOL does not require a CS degree). Every symbol is read aloud, every algorithm is traced on a tiny input, and `*If you code:*` notes are **optional extras** — skip them without losing anything. If `for`, `A[i]`, bits, graphs or logs are new, read the 📗 primer just below before Q1.
 
 > **🧭 How this workbook works (design rules)**
 > 1. **Order:** questions are processed in assignment order, which follows the syllabus (Block 1 → Block 2 → Block 3 → Block 4). Q1 must be processed before Q2, and so on.
