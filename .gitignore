@@ -1,0 +1,37 @@
+# ---------------------------------------------------------------------------
+# Allowlist: publish ONLY the study workbooks (+ their figure assets) and the
+# repository front matter. Everything else stays local/private, including:
+#   - Details.txt (personal notes/contact), .work/ scratch, agent skills,
+#   - ALL PDFs: IGNOU course material, assignments, question papers, ID card.
+# ---------------------------------------------------------------------------
+*
+
+!/.gitignore
+!/README.md
+!/LICENSE
+
+!/SEM1/
+!/SEM2/
+!/SEM3/
+!/SEM4/
+
+# inside each semester folder: keep only workbook .md files and .assets folders
+SEM1/*
+!SEM1/*.md
+!SEM1/*.assets/
+!SEM1/*.assets/**
+SEM2/*
+!SEM2/*.md
+!SEM2/*.assets/
+!SEM2/*.assets/**
+SEM3/*
+!SEM3/*.md
+!SEM3/*.assets/
+!SEM3/*.assets/**
+SEM4/*
+!SEM4/*.md
+!SEM4/*.assets/
+!SEM4/*.assets/**
+
+# internal working notes — never publish
+SEM4/MISSING_MATERIAL.md
