@@ -1101,7 +1101,7 @@ Staffing follows the Rayleigh-Norden shape: one analyst + part-time project mana
 
 **Limitations.** The model needs a reliable size estimate, the development time T and the technology constant Ck; all three are uncertain early, so the output is only as good as its inputs. It models the *whole* life cycle and is best used with, not instead of, COCOMO-style sizing.
 
-**Hence Putnam's model estimates effort, schedule and staffing together by assuming a Rayleigh–Norden manpower distribution, and its size equation S = Ck·K^(1/3)·T^(4/3) quantifies the cost of compressing the schedule.
+**Hence** Putnam's model estimates effort, schedule and staffing together by assuming a Rayleigh–Norden manpower distribution, and its size equation S = Ck·K^(1/3)·T^(4/3) quantifies the cost of compressing the schedule.
 
 ## ✅ Verification (Q1(d) block)
 

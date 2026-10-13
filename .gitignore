@@ -18,18 +18,22 @@
 # inside each semester folder: keep only workbook .md files and .assets folders
 SEM1/*
 !SEM1/*.md
+!SEM1/*.html
 !SEM1/*.assets/
 !SEM1/*.assets/**
 SEM2/*
 !SEM2/*.md
+!SEM2/*.html
 !SEM2/*.assets/
 !SEM2/*.assets/**
 SEM3/*
 !SEM3/*.md
+!SEM3/*.html
 !SEM3/*.assets/
 !SEM3/*.assets/**
 SEM4/*
 !SEM4/*.md
+!SEM4/*.html
 !SEM4/*.assets/
 !SEM4/*.assets/**
 
